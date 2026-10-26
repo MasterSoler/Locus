@@ -3,6 +3,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { SUPABASE_ANON_KEY, SUPABASE_URL, isSupabaseConfigured } from "@/lib/env";
+import { supabaseSsrCookieOptions } from "@/lib/supabase/ssr-cookie-options";
 import { safeNext as sanitize, sameOriginUrl } from "@/lib/safe-next";
 
 const PUBLIC_PREFIXES = ["/login", "/signup", "/forgot-password", "/reset-password", "/auth", "/join", "/setup", "/sso"];
@@ -22,6 +23,7 @@ export async function middleware(request: NextRequest) {
 
   let response = NextResponse.next({ request });
   const supabase = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    ...supabaseSsrCookieOptions(),
     cookies: {
       getAll() {
         return request.cookies.getAll();
