@@ -6,6 +6,9 @@ export const SUPABASE_ANON_KEY =
 
 export const isSupabaseConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
+/** OWeb constellation satellite — enables SSO + Continue with OWeb CTAs. */
+export const owebSatelliteEnabled = process.env.NEXT_PUBLIC_OWEB_SATELLITE === "on";
+
 /** Set NEXT_PUBLIC_AUTH_EMAILS=on once custom SMTP is configured in Supabase. Supabase's built-in
  *  mailer only delivers to the project's own team members, so email-link sign-in stays hidden until then. */
 export const authEmailsEnabled = process.env.NEXT_PUBLIC_AUTH_EMAILS === "on";

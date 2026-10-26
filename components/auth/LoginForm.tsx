@@ -9,6 +9,7 @@ import { AuthCard, AuthIcon, AuthLink, FormAlert } from "./AuthCard";
 import { authEmailsEnabled } from "@/lib/env";
 import { PasswordField, TextField, useCooldown, useDeferredFocus } from "./fields";
 import { EMAIL_RE, authErrorMessage, callbackUrl, isEmailUndeliverable, withNext } from "./utils";
+import { ContinueWithOweb } from "./ContinueWithOweb";
 
 type Mode = "password" | "magic";
 
@@ -293,6 +294,10 @@ export default function LoginForm({ next, initialError }: { next: string | null;
           {mode === "password" ? "Log in" : "Email me a magic link"}
         </Button>
       </form>
+
+      <div className="mt-3 space-y-3">
+        <ContinueWithOweb next={next} />
+      </div>
 
       {(authEmailsEnabled || mode === "magic") && (
         <button
