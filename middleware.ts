@@ -5,7 +5,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { SUPABASE_ANON_KEY, SUPABASE_URL, isSupabaseConfigured } from "@/lib/env";
 import { safeNext as sanitize, sameOriginUrl } from "@/lib/safe-next";
 
-const PUBLIC_PREFIXES = ["/login", "/signup", "/forgot-password", "/reset-password", "/auth", "/join", "/setup"];
+const PUBLIC_PREFIXES = ["/login", "/signup", "/forgot-password", "/reset-password", "/auth", "/join", "/setup", "/sso"];
 
 /** same-origin relative paths only, never back to the auth pages */
 function safeNext(next: string | null): string {
