@@ -3,10 +3,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@/lib/env";
+import { supabaseSsrCookieOptions } from "@/lib/supabase/ssr-cookie-options";
 
 export function createClient() {
   const cookieStore = cookies();
   return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    ...supabaseSsrCookieOptions(),
     cookies: {
       getAll() {
         return cookieStore.getAll();

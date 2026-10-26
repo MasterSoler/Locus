@@ -23,6 +23,8 @@ Copy from `.env.example`. For satellite mode you need:
 
 Locus keeps its own `workspaces` / `teams` / `issues` schema. OWeb SSO establishes the **session**; workspace onboarding inside Locus is unchanged.
 
+**Cookie name:** With `NEXT_PUBLIC_OWEB_SATELLITE=on`, browser, middleware, and RSC all use the `ao-supabase-auth` Supabase SSR cookie name (via `lib/supabase/ssr-cookie-options.ts`). If login succeeds in the browser but you bounce back unsigned-in, this alignment was missing.
+
 ## Auth flows
 
 1. **Native** — `/login` with the same email + password as OWeb (shared Auth).
